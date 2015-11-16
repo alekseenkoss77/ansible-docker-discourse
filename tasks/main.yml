@@ -13,9 +13,7 @@
 
 - name: Discourse | installation
   command: ./launcher bootstrap app chdir={{ discourse_app.root_path }}
-  user: "{{ discourse_app.user }}"
   when: folder|changed
 
 - name: Discourse | start application
   command: ./launcher start app chdir={{ discourse_app.root_path }}
-  user: "{{ discourse_app.user }}"
