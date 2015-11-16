@@ -8,7 +8,7 @@
   when: folder|changed
 
 - name: Discourse | copy configuration file
-  template: src=templates/app.yml.j2 dest={{ discourse_app.root_path }}/containers/app.yml owner={{ discourse_app.user }}
+  template: src=app.yml.j2 dest={{ discourse_app.root_path }}/containers/app.yml owner={{ discourse_app.user }}
   when: folder|changed
 
 - name: Discourse | installation
