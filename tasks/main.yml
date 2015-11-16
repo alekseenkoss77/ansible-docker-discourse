@@ -6,7 +6,7 @@
 - name: Discourse | clone from GitHub repo
   git: repo=https://github.com/discourse/discourse_docker.git
   clone: yes
-  dest: {{ discourse_app.root_path }}
+  dest: "{{ discourse_app.root_path }}"
   when: folder|changed
 
 - name: Discourse | copy configuration file
@@ -15,9 +15,9 @@
 
 - name: Discourse | installation
   command: ./launcher bootstrap app chdir={{ discourse_app.root_path }}
-  user: {{ discourse_app.user }}
+  user: "{{ discourse_app.user }}"
   when: folder|changed
 
 - name: Discourse | start application
   command: ./launcher start app chdir={{ discourse_app.root_path }}
-  user: {{ discourse_app.user }}
+  user: "{{ discourse_app.user }}"
