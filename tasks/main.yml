@@ -12,8 +12,8 @@
   when: folder|changed
 
 - name: Discourse | installation
-  command: sh ./launcher bootstrap app chdir={{ discourse_app.root_path }}
+  shell: /bin/bash launcher bootstrap app chdir={{ discourse_app.root_path }}
   when: folder|changed
 
 - name: Discourse | start application
-  command: sh ./launcher start app chdir={{ discourse_app.root_path }}
+  shell: /bin/bash launcher start app chdir={{ discourse_app.root_path }}
