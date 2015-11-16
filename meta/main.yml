@@ -1,0 +1,10 @@
+---
+galaxy_info:
+  author: Sergey Alekseenko
+  description:
+  company: Teachbase
+  license: MIT
+  min_ansible_version: 1.2
+  platforms:
+    - name: Ubuntu
+dependencies: []
