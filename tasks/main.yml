@@ -12,7 +12,7 @@
   when: folder|changed
 
 - name: Discourse | installation
-  shell: /bin/bash launcher bootstrap app chdir={{ discourse_app.root_path }}
+  shell: echo | /bin/bash launcher bootstrap app chdir={{ discourse_app.root_path }}
   when: folder|changed
 
 - name: Discourse | start application
