@@ -8,8 +8,9 @@ templates:
   - "templates/web.socketed.template.yml"
 ## which TCP/IP ports should this container expose?
 expose:
-  - "80:80"
-  - "2222:22"
+  {% for port in discourse_app.forwarded_ports %}
+    - {{ port }}
+  {% endfor %}
 
 # any extra arguments for Docker?
 # docker_args:
@@ -40,7 +41,9 @@ env:
   DISCOURSE_SMTP_USER_NAME: {{ discourse_app.smtp.user }}
   DISCOURSE_SMTP_PASSWORD: {{ discourse_app.smtp.pass }}
   DISCOURSE_SMTP_ENABLE_START_TLS: {{ discourse_app.smtp.tls }}
-  DISCOURSE_CDN_URL: {{ discourse_app.cdn_url }}
+  {% if discourse_app.cdn_url is defined %}
+    DISCOURSE_CDN_URL: {{ discourse_app.cdn_url }}
+  {% endif %}
 
 volumes:
   - volume:

@@ -5,7 +5,7 @@ discourse_app:
   default_locale: en
   lang: en_US.UTF-8
   unicorn_workers: 3
-  cdn_url: '//discourse-cdn.example.com'
+  # cdn_url: '//discourse-cdn.example.com'
   git_revision: tests-passed
   hostname: 'discourse.example.com'
   admins:
@@ -20,3 +20,5 @@ discourse_app:
     user: 'user@example.com'
     pass: 'pa$$word'
     tls: true
+  forwarded_ports:
+    - "2222:22"
