@@ -1,19 +1,18 @@
 ---
 - name: Discourse | create folder
-  file: path={{ discourse_app.root_path }} state=directory owner={{ discourse_app.user }}
+  file: path={{ discourse.root_path }} state=directory owner={{ discourse.user }}
   register: folder
 
 - name: Discourse | clone from GitHub repo
-  git: repo=https://github.com/discourse/discourse_docker.git dest={{ discourse_app.root_path }}
+  git: repo=https://github.com/discourse/discourse_docker.git dest={{ discourse.root_path }}
   when: folder|changed
 
-- name: Discourse | copy configuration file
-  template: src=app.yml.j2 dest={{ discourse_app.root_path }}/containers/app.yml owner={{ discourse_app.user }}
-  when: folder|changed
+- name: Discourse | setup conf
+  template: src={{ discourse.app_conf }} dest={{ discourse.root_path }}/containers/app.yml owner={{ discourse.user }} force=yes
 
 - name: Discourse | installation
-  shell: echo | /bin/bash launcher bootstrap app chdir={{ discourse_app.root_path }}
+  shell: echo | /bin/bash launcher bootstrap app chdir={{ discourse.root_path }}
   when: folder|changed
 
 - name: Discourse | start application
-  shell: /bin/bash launcher start app chdir={{ discourse_app.root_path }}
+  shell: /bin/bash launcher start app chdir={{ discourse.root_path }}

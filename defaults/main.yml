@@ -1,24 +1,10 @@
----
-discourse_app:
+discourse:
   user: web
   root_path: '/var/discourse'
-  default_locale: en
-  lang: en_US.UTF-8
-  unicorn_workers: 3
-  # cdn_url: '//discourse-cdn.example.com'
-  git_revision: tests-passed
-  hostname: 'discourse.example.com'
-  admins:
-    - admin@example.com
-  db:
-    search_conf: "pg_catalog.english"
-    db_shared_buffers: 256MB
-    db_work_mem: 40MB
+  host: 'discourse.example.com'
+  app_conf: "templates/discourse/app.yml.j2"
   smtp:
     address: smtp.example.com
     port: 587
     user: 'user@example.com'
     pass: 'pa$$word'
-    tls: true
-  forwarded_ports:
-    - "2222:22"
