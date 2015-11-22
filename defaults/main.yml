@@ -2,7 +2,7 @@ discourse:
   user: web
   root_path: '/var/discourse'
   host: 'discourse.example.com'
-  app_conf: "templates/discourse/app.yml.j2"
+  app_conf: ''
   smtp:
     address: smtp.example.com
     port: 587
