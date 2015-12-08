@@ -11,7 +11,7 @@
   template: src={{ discourse.app_conf }} dest={{ discourse.root_path }}/containers/app.yml owner={{ discourse.user }} force=yes
 
 - name: Discourse | installation
-  shell: echo | /bin/bash launcher bootstrap app chdir={{ discourse.root_path }}
+  shell: echo -ne '\n' | /bin/bash launcher bootstrap app chdir={{ discourse.root_path }}
   when: folder|changed
 
 - name: Discourse | start application
